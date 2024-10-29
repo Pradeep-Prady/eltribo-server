@@ -19,7 +19,9 @@ app.use(
       "http://localhost:3000",
       "http://localhost:3001",
       "https://eltribo-ruby.vercel.app",
-      "https://eltribo-ruby.vercel.app/"
+      "https://eltribo-ruby.vercel.app/",
+      "https://eltribo-ui.vercel.app/",
+      "https://eltribo-ui.vercel.app"
       ,
     ],
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
