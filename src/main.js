@@ -24,6 +24,7 @@ app.use(passport.initialize());
 app.use('/api', indexRoute);
 
 app.use(globalResponseController);
+
 const server = app.listen(process.env.PORT, () => {
 	console.log(`Server listening on port ${process.env.PORT}`);
 });
