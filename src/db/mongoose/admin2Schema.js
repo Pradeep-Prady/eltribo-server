@@ -118,7 +118,7 @@ class AdminModel {
           },
         },
       ],
-       // Specifications field as an array of objects
+      // Specifications field as an array of objects
       // slug: {
       //   type: String,
       // },
@@ -134,11 +134,9 @@ class AdminModel {
       //   },
       // ],
 
-      metaKeywords:  
-        {
-          type: String,
-        },
-      
+      metaKeywords: {
+        type: String,
+      },
     });
 
     const ContactUsSchema = new mongoose.Schema({

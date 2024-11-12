@@ -45,6 +45,7 @@
 // }
 
 // export const Admin2V = new AdminValidator();
+
 import joi from "joi";
 
 class AdminValidator {

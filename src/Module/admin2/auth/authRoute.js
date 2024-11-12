@@ -1,11 +1,9 @@
-import express from 'express';
-import { loginAdmin } from './adminController.js';
+// import express from 'express';
+// import { loginAdmin } from './adminController.js';
  
-const router = express.Router();
+// const router = express.Router();
 
  
-router.post('/login', loginAdmin);
-// router.get('/get', CategoryC.get);
-// router.get('/getProducts/:id', CategoryC.getProducts);
-
-export default router;
+// router.post('/login', loginAdmin);
+ 
+// export default router;

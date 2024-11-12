@@ -3,7 +3,6 @@ import { ProdC } from "./productController.js";
 import { upload, uploadTopImg } from "../../../utils/multer.js";
 
 const productRoute = express.Router();
-console.log("inside *********************233232**************************");
 
  productRoute.post('/addproduct', upload, ProdC.addProduct);
 
