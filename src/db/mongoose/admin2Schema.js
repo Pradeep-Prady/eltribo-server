@@ -107,6 +107,7 @@ class AdminModel {
       },
       specifications: [
         {
+          _id: mongoose.Schema.Types.ObjectId, // Adding custom _id
           key: {
             type: String,
             required: true,
@@ -116,7 +117,8 @@ class AdminModel {
             required: true,
           },
         },
-      ], // Specifications field as an array of objects
+      ],
+       // Specifications field as an array of objects
       // slug: {
       //   type: String,
       // },
@@ -126,11 +128,17 @@ class AdminModel {
       metaDescription: {
         type: String,
       },
-      metaKeywords: [
+      // metaKeywords: [
+      //   {
+      //     type: String,
+      //   },
+      // ],
+
+      metaKeywords:  
         {
           type: String,
         },
-      ],
+      
     });
 
     const ContactUsSchema = new mongoose.Schema({

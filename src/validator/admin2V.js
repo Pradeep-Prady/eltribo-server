@@ -73,7 +73,7 @@ class AdminValidator {
         slug: joi.string().optional(),
         metaTitle: joi.string().optional(),
         metaDescription: joi.string().optional(),
-        metaKeywords: joi.array().items(joi.string()).optional(),
+        metaKeywords: joi.string().optional(),
       })
       .required();
 

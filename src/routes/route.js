@@ -6,6 +6,7 @@ import auth from "../Module/admin2/auth/authRoute.js";
 
 const route = express.Router();
 
+
 route.get("/mail", async (req, res) => {
   res.json("Mail Sent");
 });
