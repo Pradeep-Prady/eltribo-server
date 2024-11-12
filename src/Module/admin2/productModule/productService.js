@@ -16,6 +16,8 @@ class ProductService {
 	constructor() { }
 	
 	async addProduct(req) {
+
+		console.log('here')
 		try {
 			req.body.img = [];
 			for (let i = 0; i < req.files.length; i++){

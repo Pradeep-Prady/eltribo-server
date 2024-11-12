@@ -17,6 +17,9 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
+      "http://localhost:3000/",
+      "http://localhost:3000/",
+
       "http://localhost:3001",
       "https://eltribo-ruby.vercel.app",
       "https://eltribo-ruby.vercel.app/",
@@ -41,3 +44,6 @@ const server = app.listen(process.env.PORT, () => {
 
 process.on("SIGTERM", () => shutdown(server));
 process.on("SIGINT", () => shutdown(server));
+
+
+console.log('inside ************************************************')

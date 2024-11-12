@@ -8,6 +8,7 @@ class ProductController {
 	constructor() { }
 	
 	async addProduct(req, res, next) {
+		console.log('add product')
 		req.body = JSON.parse(req.body.product);
 		await validate(req, next, Admin2V.product);
 		const pro = await service(req, next, ProdS.addProduct);
@@ -49,6 +50,7 @@ class ProductController {
 	}
 
 	async contactUs(req, res, next) {
+	 
 		await validate(req, next, Admin2V.contactUs);
 		const con = await service(req, next, ProdS.contactUs);
 		return next(new AppSucc(con, 'success', 200));
