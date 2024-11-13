@@ -90,7 +90,7 @@ class ProductController {
   }
 
   async contactUs(req, res, next) {
-    await validate(req, next, Admin2V.contactUs);
+    // await validate(req, next, Admin2V.contactUs);
     const con = await service(req, next, ProdS.contactUs);
     return next(new AppSucc(con, "success", 200));
   }

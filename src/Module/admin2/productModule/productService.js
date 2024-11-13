@@ -175,7 +175,11 @@ class ProductService {
 
   async contactUs(req) {
     try {
+
+      console.log('req.body',req.body)
       const con = await Admin2db.contact.create(req.body);
+
+      console.log("con",con)
       await contactMail(
         "flapberrywhistle@gmail.com",
         con.name,
@@ -189,6 +193,7 @@ class ProductService {
       });
       return con;
     } catch (err) {
+      console.log(err)
       return err;
     }
   }
