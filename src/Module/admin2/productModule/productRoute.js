@@ -7,6 +7,8 @@ const productRoute = express.Router();
  productRoute.post('/addproduct', upload, ProdC.addProduct);
 
 productRoute.get("/getproduct", ProdC.getProduct);
+productRoute.get("/getoneproductByName/:name", ProdC.getOneProductByName);
+
 productRoute.get("/getoneproduct/:id", ProdC.getOneProduct);
 productRoute.patch("/updateproduct/:id", upload, ProdC.updateProduct);
 productRoute.patch("/updateimage/:id", upload, ProdC.updateImage);

@@ -56,7 +56,7 @@ const allowedOrigins = [
   "https://eltribo-ui.vercel.app/",
   "https://eltribo-ui.vercel.app",
 ];
-app.use(cookieParser());
+ 
 
 app.use(
   cors({
@@ -85,5 +85,4 @@ const server = app.listen(process.env.PORT, () => {
 
 process.on("SIGTERM", () => shutdown(server));
 process.on("SIGINT", () => shutdown(server));
-
-console.log("inside ************************************************");
+ 

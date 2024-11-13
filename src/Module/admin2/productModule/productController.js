@@ -9,7 +9,6 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { promisify } from "util";
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -29,7 +28,7 @@ class ProductController {
   async getProduct(req, res, next) {
     const products = await Admin2db.product.find({});
 
-	const productsWithBase64Images = await Promise.all(
+  const productsWithBase64Images = await Promise.all(
         products.map(async (product) => {
           const base64Images = await Promise.all(
             product.img.map(async (image) => {
@@ -42,16 +41,30 @@ class ProductController {
         })
       );
 
-	console.log(products, "products")
+  console.log(products, "products")
     // const pro = await service(req, next, ProdS.getProduct);
     // res.json({data: true});
     return next(new AppSucc( productsWithBase64Images , "success", 200));
   }
 
+//   async getProduct(req, res, next) {
+//     // const pro = await service(req, next, ProdS.getProduct);
+//     // res.json({data: true});
+//     return next(new AppSucc(true, "success", 200));
+//   }
   async getOneProduct(req, res, next) {
     const pro = await service(req, next, ProdS.getOneProduct);
     return next(new AppSucc(pro, "success", 200));
   }
+
+  async getOneProductByName(req, res, next) {
+    console.log("getOneProductByName")
+    const pro = await service(req, next, ProdS.getOneProductByName);
+
+    console.log("pro",pro)
+    return next(new AppSucc(pro, "success", 200));
+  }
+  
 
   async updateProduct(req, res, next) {
     req.body = JSON.parse(req.body.product);

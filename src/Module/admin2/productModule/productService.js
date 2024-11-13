@@ -1,5 +1,6 @@
 import { Admin2db } from "../../../db/mongoose/admin2Schema.js";
-import fs from "fs";
+ 
+import { readFile } from 'fs/promises'; // Use fs/promises to support async/await
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { promisify } from "util";
@@ -14,7 +15,6 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
- 
 class ProductService {
   constructor() {}
 
@@ -35,7 +35,7 @@ class ProductService {
     }
   }
 
-  async getProduct (req) {
+  async getProduct(req) {
     try {
       const products = await Admin2db.product.find({});
       console.log("🚀 ~ ProductService ~ getProduct ~ products:", products);
@@ -45,6 +45,7 @@ class ProductService {
           const base64Images = await Promise.all(
             product.img.map(async (image) => {
               const imagePath = path.join(__dirname, "../../../images", image);
+
               const imageBuffer = await readFile(imagePath);
               return `data:image/png;base64,${imageBuffer.toString("base64")}`;
             })
@@ -57,6 +58,36 @@ class ProductService {
       return err;
     }
   }
+
+
+  async getOneProductByName(req) {
+    try {
+      const prod = await Admin2db.product.findOne({ name: req.params.name });
+      console.log("🚀 ~ ProductService ~ getOneProduct ~ prod:", prod);
+  
+      if (!prod) return "no Prod";
+  
+      const base64Images = await Promise.all(
+        prod.img.map(async (image) => {
+          const imagePath = path.join(__dirname, "../../../images", image);
+  
+          // Check if imagePath is valid
+          if (imagePath) {
+            const imageBuffer = await readFile(imagePath);
+            return `data:image/png;base64,${imageBuffer.toString("base64")}`;
+          }
+          return null; // Return null if the image path is invalid or empty
+        })
+      );
+  
+      return { ...prod._doc, img: base64Images.filter(Boolean), imgNames: prod.img };
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  }
+
+
 
   async getOneProduct(req) {
     try {

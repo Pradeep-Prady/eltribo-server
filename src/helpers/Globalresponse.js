@@ -18,8 +18,7 @@ const sendErr = (err, res) => {
 };
 
 const globalResponseController = (data, req, res, next) => {
-	console.log(data)
-
+ 
 	if (data.statusCode === 200 || data.statusCode === 201) {
 		sendResponse(data, res);
 	} else {
